@@ -5,7 +5,8 @@ import { revalidatePath } from "next/cache";
 
 export const fetchTasks = async () => {
   const supabase = await createSupabaseServerSide();
-  let { data, error } = await supabase.from("notes").select("*");
+  let { data, error } = await supabase.from("blogs").select("*");
+  console.log(data);
   if (error)
     return {
       success: false,

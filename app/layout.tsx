@@ -27,6 +27,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <div className="flex flex-row gap-10">
+          <button>All</button>
+          <button>Create Blog</button>
+          <button>All</button>
+        </div>
         {children}
       </body>
     </html>
