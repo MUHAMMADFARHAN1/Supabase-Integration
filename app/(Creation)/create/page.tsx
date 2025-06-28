@@ -12,7 +12,8 @@ export default function page() {
         <input name="title" type="text" placeholder="Insert your title" />
         <input name="body" type="text" placeholder="Insert your body" />
         <input name="author" type="text" placeholder="Insert your author" />
-        <input name="cover_url" type="text" placeholder="Insert your url" />
+        {/* <input name="cover_url" type="text" placeholder="Insert your url" /> */}
+        <input type="file" id="imageUpload" name="image" accept="image/*" />
         {/* <input name="created_at" type="text" placeholder="Insert your author" /> */}
         <button type="submit">Submit</button>
       </form>
