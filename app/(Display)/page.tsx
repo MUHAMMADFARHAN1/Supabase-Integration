@@ -26,9 +26,9 @@ export default async function page() {
           <div>{note.author}</div>
           <div>{note.cover_url}</div>
           <div>{note.created_at}</div>
+          <img src={note.cover_url} alt="" width="100px" />
         </div>
       ))}
     </>
   );
 }
-

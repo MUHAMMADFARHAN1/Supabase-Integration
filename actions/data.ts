@@ -40,6 +40,8 @@ export const createTask = async (formData: FormData) => {
   const { data: urlData } = supabase.storage
     .from("cover-picture")
     .getPublicUrl(filename);
+
+  console.log(urlData);
   // const { data, error } = await supabase
   //   .from("blogs")
   //   .insert([{ title, body, author, cover_url }]);
@@ -48,7 +50,14 @@ export const createTask = async (formData: FormData) => {
 
   const { data, error } = await supabase
     .from("blogs")
-    .insert([{ title: title, body: body, author: author, cover_url: urlData }])
+    .insert([
+      {
+        title: title,
+        body: body,
+        author: author,
+        cover_url: urlData.publicUrl,
+      },
+    ])
     .select();
 
   // console.log({ title, body, author, file });
