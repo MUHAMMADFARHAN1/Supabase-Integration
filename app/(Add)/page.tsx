@@ -16,3 +16,29 @@ export default function page() {
     </div>
   );
 }
+
+
+// const { success, data }: Response = await fetchTasks();
+// if (!success) return <p className="text-red-600">{data}</p>;
+// if (typeof data !== "string")
+//     return (
+//         <main className="flex min-h-screen flex-col items-center justify-between p-24">
+//             <div>
+//                 <Form />
+//                 <ul className="mt-12 space-y-4">
+//                     {data?.map((note: any) => (
+//                         <div
+//                             key={note.id}
+//                             className="min-w-[300px] flex justify-between items-center"
+//                         >
+//                             <span>{note.text}</span>
+//                             <Link href={`/notes/${note.id}`}>
+//                                 <Button>open</Button>
+//                             </Link>
+//                             <DeleteButton id={note.id} />
+//                         </div>
+//                     ))}
+//                 </ul>
+//             </div>
+//         </main>
+//     );
