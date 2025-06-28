@@ -21,25 +21,39 @@ export const fetchTasks = async () => {
 export const createTask = async (formData: FormData) => {
   const title = formData.get("title") as string;
   const body = formData.get("body") as string;
-  const author = formData.get("author") as File;
-  // const file = formData.get("file") as string;
+  const author = formData.get("author") as string;
+  const file = formData.get("image") as File;
 
   // const cover = formData.get("cover_url") as string;
 
   const supabase = await createSupabaseServerSide();
+
+  const filename = `${Date.now()}`;
+
+  const { error: uploadError } = await supabase.storage
+    .from("cover-picture")
+    .upload(filename, file, {
+      cacheControl: "3600",
+      upsert: false,
+    });
+
+  const { data: urlData } = supabase.storage
+    .from("cover-picture")
+    .getPublicUrl(filename);
   // const { data, error } = await supabase
   //   .from("blogs")
   //   .insert([{ title, body, author, cover_url }]);
   // // .select();
+  console.log(uploadError);
 
   const { data, error } = await supabase
     .from("blogs")
-    .insert([{ title: title, body: body, author: author }])
+    .insert([{ title: title, body: body, author: author, cover_url: urlData }])
     .select();
 
   // console.log({ title, body, author, file });
 
-  console.log(error);
+  // console.log(error);
   console.log(data);
   revalidatePath("/");
 };
