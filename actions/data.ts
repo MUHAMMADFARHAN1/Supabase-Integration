@@ -21,8 +21,10 @@ export const fetchTasks = async () => {
 export const createTask = async (formData: FormData) => {
   const title = formData.get("title") as string;
   const body = formData.get("body") as string;
-  const author = formData.get("author") as string;
-  const cover = formData.get("cover_url") as string;
+  const author = formData.get("author") as File;
+  // const file = formData.get("file") as string;
+
+  // const cover = formData.get("cover_url") as string;
 
   const supabase = await createSupabaseServerSide();
   // const { data, error } = await supabase
@@ -32,10 +34,10 @@ export const createTask = async (formData: FormData) => {
 
   const { data, error } = await supabase
     .from("blogs")
-    .insert([{ title: title, body: body, author: author, cover_url: cover }])
+    .insert([{ title: title, body: body, author: author }])
     .select();
 
-  console.log({ title, body, author, cover });
+  // console.log({ title, body, author, file });
 
   console.log(error);
   console.log(data);
