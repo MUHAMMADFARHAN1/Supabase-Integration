@@ -36,5 +36,8 @@ export const createTask = async (formData: FormData) => {
     .select();
 
   console.log({ title, body, author, cover });
+
+  console.log(error);
+  console.log(data);
   revalidatePath("/");
 };
